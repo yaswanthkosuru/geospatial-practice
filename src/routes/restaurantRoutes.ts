@@ -1,15 +1,27 @@
 import express from 'express';
 const router = express.Router();
-import { getRestaurants, deleteRestaurant } from '../controllers/restaurantControllers';
+import {
+	createRestaurant,
+	getRestaurant,
+	getRestaurantsInRadiusRange,
+	getRestaurantsInDistanceRange,
+	updateRestaurant,
+	deleteRestaurant,
+} from '../controllers/restaurantControllers';
 import { authenticateToken } from '../middlewares/userAuth';
-//get all restaurants
-router.get('/v1/restaurants', authenticateToken, getRestaurants);
 //create restaurant
-router.post('/v1/restaurant', authenticateToken, getRestaurants);
-//retrive restaurant
-router.post('/v1/restaurant/:id', authenticateToken, getRestaurants);
+router.post('/v1/restaurant', authenticateToken, createRestaurant);
+
+//get restaurant by id
+router.get('/v1/restaurant/:id', authenticateToken, getRestaurant);
+//get  restaurants in radius range
+router.get('/v1/restaurantsinrange', authenticateToken, getRestaurantsInRadiusRange);
+//get  restaurants in distance range
+router.get('/v1/restaurantsindistancerange', authenticateToken, getRestaurantsInDistanceRange);
+
 //update restaurant
-router.put('/v1/restaurant/:id', authenticateToken, getRestaurants);
+router.put('/v1/restaurant/:id', authenticateToken, updateRestaurant);
+
 //delete restaurant
 router.delete('/v1/restaurant/:id', authenticateToken, deleteRestaurant);
 
