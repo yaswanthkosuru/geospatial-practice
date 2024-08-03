@@ -3,7 +3,7 @@ import {
   connectToDatabase,
   closeConnection,
 } from "./utils/database/connectionTomongo";
-import restaurantroutes from "./routes/restaurant";
+import restaurantroutes from "./routes/restaurantRoutes";
 const app = express();
 app.use(express.json());
 
@@ -14,6 +14,7 @@ let db: any;
 const startServer = async () => {
   try {
     db = await connectToDatabase();
+
     app.use((req, res, next) => {
       console.log(req.path, req.method);
       next();
