@@ -1,7 +1,7 @@
 import { getDb } from '../utils/database/connectionTomongo';
 import { Request, Response } from 'express';
 import userSchema from '../models/userModel';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { z } from 'zod';
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;

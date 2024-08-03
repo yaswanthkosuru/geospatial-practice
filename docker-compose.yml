@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+    app:
+        image: geopractice
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - '3000:3000'
+        environment:
+            - PORT=3000
+            - DATABASE_URL=mongodb+srv://yaswanthkosuru:yaswanth123@cluster0.3abhi8n.mongodb.net
+            - MONGO_DB_NAME=sample_restaurants
+            - JWT_SECRET=akdfhuioahu@d3@$%&*f4d
+
+volumes:
+    mongo-data:
