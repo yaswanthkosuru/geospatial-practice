@@ -27,13 +27,20 @@ Ensure you have the following environment variables set in your environment or c
 
 ## Deployment
 
-The code is deployed to vercel service
+The code is deployed to vercel service with API link
+https://geospatial-practice.vercel.app/
 
 # CODE OVERVIEW
 
 1.which uses Express js to create server and mongodb as storage.
 
+# docker
+
+Run server via docker
+docker run -d -p 3000:3000 yaswanthkosuru/geopractice
+now server running in port 3000 in local computer
+
 # Further imporvements
 
 -   use Docker to run new mongodb instance and make these container and node js server communicate with each other.
--   for convinence i am giving mongo variables please use for only testing purposes.
+-   for convinence i am mentioning mongo variables inside readme please use for only testing purposes.
