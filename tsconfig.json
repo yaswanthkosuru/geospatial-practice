@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"target": "ES6",
 		"module": "commonjs",
-		"outDir": "./build",
+		"outDir": "./dist", // Ensure this matches the output directory
 		"rootDir": "./src",
 		"strict": true,
 		"typeRoots": ["./node_modules/@types", "src/@types"],
