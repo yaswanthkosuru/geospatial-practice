@@ -1,6 +1,6 @@
 import { MongoClient, Db } from "mongodb";
 import { areEnvVariablesAvailable } from "../configCheck";
-if (!areEnvVariablesAvailable("MONGO_URI", "MONGO_DB_NAME")) {
+if (!areEnvVariablesAvailable("MONGO_URI", "MONGO_DB_NAME", "JWT_SECRET_KEY")) {
   process.exit(1);
 }
 const url = process.env.MONGO_URI;

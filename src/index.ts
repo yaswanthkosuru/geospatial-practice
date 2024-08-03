@@ -3,7 +3,8 @@ import {
   connectToDatabase,
   closeConnection,
 } from "./utils/database/connectionTomongo";
-import restaurantroutes from "./routes/restaurantRoutes";
+import restaurantRoutes from "./routes/restaurantRoutes";
+import userRoutes from "./routes/userRoutes";
 const app = express();
 app.use(express.json());
 
@@ -23,7 +24,8 @@ const startServer = async () => {
     app.get("/", (req, res) => {
       res.json({ message: "server running succesfully" });
     });
-    app.use("/api", restaurantroutes);
+    app.use("/api", restaurantRoutes);
+    app.use("/api", userRoutes);
 
     app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
       console.error(err.stack);
