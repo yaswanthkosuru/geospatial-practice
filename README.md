@@ -37,7 +37,7 @@ https://geospatial-practice.vercel.app/
 # docker
 
 Run server via docker
-docker run -d -p 3000:3000 yaswanthkosuru/geopractice
+`docker run -d -p 3000:3000 yaswanthkosuru/geopractice`
 now server running in port 3000 in local computer
 
 # Further imporvements
