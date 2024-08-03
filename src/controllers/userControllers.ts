@@ -12,6 +12,12 @@ export async function registerUser(req: Request, res: Response) {
 		const usersCollection = db.collection('users');
 		const parsed = userSchema.parse(req.body);
 		const hashedPassword = await bcrypt.hash(parsed.password, 10);
+
+		const user = await usersCollection.findOne({ username: parsed.username });
+		if (user) {
+			return res.status(400).json({ errors: `User ${user.username} already exists` });
+		}
+
 		await usersCollection.insertOne({
 			username: parsed.username,
 			password: hashedPassword,
@@ -38,7 +44,7 @@ export async function loginUser(req: Request, res: Response) {
 		if (!user || !(await bcrypt.compare(password, user.password))) {
 			return res.status(401).send('Invalid credentials');
 		}
-		const token = jwt.sign({ id: user._id }, JWT_SECRET_KEY as string, {
+		const token = jwt.sign(user, JWT_SECRET_KEY as string, {
 			expiresIn: '1h',
 		});
 		res.json({ token });

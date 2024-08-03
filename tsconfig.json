@@ -1,12 +1,13 @@
 {
-  "compilerOptions": {
-    "target": "ES6",
-    "module": "commonjs",
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,
-    "esModuleInterop": true
-  },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"]
+	"compilerOptions": {
+		"target": "ES6",
+		"module": "commonjs",
+		"outDir": "./dist",
+		"rootDir": "./src",
+		"strict": true,
+		"typeRoots": ["./node_modules/@types", "src/@types"],
+		"esModuleInterop": true
+	},
+	"include": ["src/**/*.ts", "src/middlewares/userAuth.js"],
+	"exclude": ["node_modules"]
 }
