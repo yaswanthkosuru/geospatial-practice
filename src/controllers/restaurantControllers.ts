@@ -41,7 +41,7 @@ export async function getRestaurant(req: UserRequest, res: Response) {
 	try {
 		const db = await getDb();
 		const { id } = req.params;
-		console.log(req.user, 'req.user inside get restaurent');
+
 		const restaurantCollection = db.collection('restaurants');
 		const restaurantDocument = await restaurantCollection.findOne({ _id: new ObjectId(id) });
 		res.json(restaurantDocument);
@@ -53,13 +53,11 @@ export async function getRestaurant(req: UserRequest, res: Response) {
 
 export async function getRestaurantsInRadiusRange(req: UserRequest, res: Response) {
 	try {
-		console.log(req.query, 'req query');
 		const longitude = parseFloat(req.query.longitude as string);
 		const latitude = parseFloat(req.query.latitude as string);
 		const radius = parseFloat(req.query.radius as string);
 		const db = await getDb();
-		console.log(req.user, 'req.user inside get restaurant');
-		console.log(longitude, 'longitude', latitude, radius);
+
 		const restaurantCollection = db.collection('restaurants');
 		if (
 			isNaN(longitude) ||
@@ -94,14 +92,12 @@ export async function getRestaurantsInRadiusRange(req: UserRequest, res: Respons
 
 export async function getRestaurantsInDistanceRange(req: UserRequest, res: Response) {
 	try {
-		console.log(req.query, 'req query');
 		const longitude = parseFloat(req.query.longitude as string);
 		const latitude = parseFloat(req.query.latitude as string);
 		const mindistance = parseFloat(req.query.mindistance as string);
 		const maxdistance = parseFloat(req.query.maxdistance as string);
 		const db = await getDb();
-		console.log(req.user, 'req.user inside get restaurant');
-		console.log(longitude, 'longitude', latitude, mindistance, maxdistance);
+
 		const restaurantCollection = db.collection('restaurants');
 		if (
 			isNaN(longitude) ||
@@ -176,7 +172,7 @@ export async function deleteRestaurant(req: UserRequest, res: Response) {
 	try {
 		const db = await getDb();
 		const id = req.params.id;
-		console.log(req.user, id, 'req.user inside get restaurent');
+
 		const restaurantCollection = db.collection('restaurants');
 		if (!ObjectId.isValid(id)) {
 			return res.status(400).json({ message: 'Invalid restaurant ID' });
